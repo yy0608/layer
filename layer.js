@@ -82,7 +82,7 @@
       }
     },
     insertStyle: function () {
-      let styleEle = document.createElement('style')
+      var styleEle = document.createElement('style')
       var commonStyle = '\
         .comp-toast {\
           position: fixed;\
@@ -275,7 +275,7 @@
           -ms-transform: translateX(-50%) translateY(-50%) scale(.5);\
           -o-transform: translateX(-50%) translateY(-50%) scale(.5);\
         }\
-      `'
+      '
       var mobileStyle = '\
         .comp-toast {\
           text-align: center;\
