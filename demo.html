@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>layer</title>
+</head>
+<style>
+.item {
+  margin: 20px;
+}
+button {
+  cursor: pointer;
+  border-style: none;
+  width: 120px;
+  height: 36px;
+  outline: 0;
+}
+</style>
+<body>
+<div class="item">
+  <button onclick="toast()">toast</button>
+</div>
+<div class="item">
+  <button onclick="confirm()">confirm</button>
+</div>
+<div class="item">
+  <button onclick="prompt()">prompt</button>
+</div>
+<div class="item">
+  <button onclick="content()">content</button>
+</div>
+<div class="item">
+  <button onclick="loading()">loading</button>
+</div>
+</body>
+<script src="layer.js"></script>
+<script>
+function toast () {
+  layer.toast('我是提示消息')
+}
+function confirm () {
+  layer.confirm('<div class="your-class">认识我吧</div>')
+}
+function prompt () {
+  layer.prompt('确认删除？', function (res) {
+    if (res) {
+      layer.toast('点击了确认')
+    } else {
+      layer.toast('点击了取消')
+    }
+  })
+}
+function content () {
+  layer.content({
+    content: '<div>我是内容</div>',
+    width: '60%',
+    height: '300px'
+  })
+}
+function loading () {
+  layer.startLoading()
+  setTimeout(function () {
+    layer.endLoading()
+  }, 2000)
+}
+</script>
+</html>
