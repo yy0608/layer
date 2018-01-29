@@ -12,12 +12,16 @@ toast, confirm, prompt, content, loading
 ###### 3. 传参介绍
 
 toast，可以传入字符串或者dom字符串，如果是dom字符串请自行书写样式
+```
 layer.toast('我是提示')
 layer.toast('<div>我是提示</div>')
+```
 
 confirm, 类似原生的alert事件，可以传入字符串或者dom字符串，如果是dom字符串请自行书写样式
+```
 layer.confirm('我是提示')
 layer.confirm('<div>我是提示</div>')
+```
 
 prompt, 可以传入字符串或者dom字符串，如果是dom字符串请自行书写样式。回调会返回一个bool值，告诉程序用户点击了哪个
 ```
