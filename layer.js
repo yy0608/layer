@@ -4,7 +4,7 @@
     popup: '<div class="J_MaskCont mask-cont"><div class="J_WinpopBox winpop-box"><div class="winpop-title">提示</div><div class="J_WinpopMain winpop-main"></div><div class="J_WinpopBtns winpop-btns"></div></div>',
     confirm: '<a href="javascript:;" class="J_AltBtn pop-btn alert-btn">确定</a>',
     prompt: '<a href="javascript:;" class="J_CfmFalse pop-btn cfm-false">取消</a><a href="javascript:;" class="J_CfmTrue pop-btn cfm-true">确定</a>',
-    content: '<div class="J_MaskCont mask-cont"><div class="J_ContentBox content-box"><span class="J_CloseBtn close-btn">x</span><div class="J_InnerContent inner-content"></div></div></div>',
+    content: '<div class="J_MaskCont mask-cont"><div class="J_ContentBox content-box"><span class="J_CloseBtn close-btn"></span><div class="J_InnerContent inner-content"></div></div></div>',
     loading: '<div class="J_LoadingCont loading-cont"><div class="loading-content"></div></div>'
   }
   var utils = {
@@ -146,6 +146,45 @@
           -ms-transform: translateZ(0);\
           transform: translateZ(0);\
         }\
+        .close-btn {\
+          position: absolute;\
+          right: 0;\
+          top: 0;\
+          width: 60px;\
+          height: 60px;\
+          overflow: hidden;\
+          border-radius: 50% !important;\
+          z-index: 100000;\
+          cursor: pointer;\
+        }\
+        .close-btn:hover::before, .close-btn:hover::after {\
+          background: #eee;\
+        }\
+        .close-btn::before, .close-btn::after {\
+          content: \'\';\
+          position: absolute;\
+          height: 2px;\
+          width: 50%;\
+          top: 50%;\
+          left: 50%;\
+          margin-top: -1px;\
+          margin-left: -25%;\
+          background: #fff;\
+        }\
+        .close-btn::before {\
+          -webkit-transform: rotate(45deg);\
+          -moz-transform: rotate(45deg);\
+          -ms-transform: rotate(45deg);\
+          -o-transform: rotate(45deg);\
+          transform: rotate(45deg);\
+        }\
+        .close-btn::after {\
+          -webkit-transform: rotate(-45deg);\
+          -moz-transform: rotate(-45deg);\
+          -ms-transform: rotate(-45deg);\
+          -o-transform: rotate(-45deg);\
+          transform: rotate(-45deg);\
+        }\
         @-webkit-keyframes loading {\
           0%,\
           100% {\
@@ -239,7 +278,7 @@
           left: 50%;\
           top: 50%;\
           box-sizing: border-box;\
-          padding: 20px 30px 20px 20px;\
+          /* padding: 20px 30px 20px 20px; */\
           transform: translateX(-50%) translateY(-50%);\
           -webkit-transform: translateX(-50%) translateY(-50%);\
           -moz-transform: translateX(-50%) translateY(-50%);\
@@ -247,19 +286,6 @@
           -o-transform: translateX(-50%) translateY(-50%);\
           background-color: #fff;\
           border-radius: 4px;\
-        }\
-        .close-btn {\
-          position: absolute;\
-          right: 5px;\
-          top: 5px;\
-          cursor: pointer;\
-          padding: 10px;\
-          line-height: 1;\
-          border-radius: 4px;\
-          transition: background-color ease .2s;\
-        }\
-        .close-btn:hover {\
-          background-color: #e0e0e0;\
         }\
         .loading-cont {\
           position: fixed;\
@@ -442,6 +468,9 @@
       utils.select('.J_ContentBox').style.width = width
       utils.select('.J_ContentBox').style.height = height
       this.addContentEvent()
+    },
+    contentRemove () {
+      utils.remove('.J_MaskCont')
     },
     addContentEvent: function () {
       utils.select('.J_ContentBox').addEventListener('click', function (e) {
