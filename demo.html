@@ -100,18 +100,21 @@ function input () {
       type: 'text',
       label: '姓名',
       name: 'name',
+      value: '小明',
       required: true
     },
     {
       type: 'text',
       label: '年龄',
       name: 'age',
+      placeholder: '请输入年龄',
       required: true
     },
     {
       type: 'radio',
       label: '性别',
       name: 'sex',
+      value: 'male',
       options: [{
         label: '男',
         value: 'male'
@@ -128,12 +131,14 @@ function input () {
       type: 'text',
       label: '学校',
       name: 'school',
+      value: '蓝翔技校',
       required: false
     },
     {
       type: 'checkbox',
       label: '爱好',
       name: 'hobby',
+      value: 'dance',
       options: [{
         label: '象棋',
         value: 'chess'
@@ -147,10 +152,12 @@ function input () {
         label: '睡觉',
         value: 'sleep'
       }]
-    }, {
+    },
+    {
       type: 'select',
       label: '地区',
       name: 'rigion',
+      value: 'BeiJing',
       options: [{
         label: '请选择',
         value: ''
@@ -165,6 +172,10 @@ function input () {
         value: 'BeiJing'
       }],
       required: true
+    }, {
+      type: 'hidden',
+      name: 'hash',
+      value: 'test'
     }],
     callback: function (res) { // 所有的回调
       console.log(res)
