@@ -319,7 +319,7 @@
               inputsStr += '<div class="input-item"><span class="require-star ' + (inputs[i].required ? 'dis-block' : 'dis-none') + '">*</span><div class="label">' + inputs[i].label + '</div><div class="input-context">';
               for (var j = 0; j < inputs[i].options.length; j++) {
                 var checked = false
-                if (inputs[i].options[j].value === inputs[i].value) {
+                if (inputs[i].value.indexOf(inputs[i].options[j].value) !== -1) {
                   checked = true
                 }
                 inputsStr += '<label class="label-click"><input type="checkbox" ' + (checked ? 'checked' : '') + ' name="' + inputs[i].name + '" value="' + inputs[i].options[j].value + '" /><span class="option">' + inputs[i].options[j].label + '</span></label>'
@@ -373,11 +373,11 @@
         cancel && cancel(false)
       })
       promptTrueBtn.addEventListener('click', function () {
-        var resValue = []
+        var resValue = undefined
         if (inputs) {
+          var tempRes = {}
           for (var i = 0; i < inputs.length; i++) {
             var name = inputs[i].name
-            var tempRes = {}
             switch (inputs[i].type) {
               case undefined:
               case 'text':
@@ -413,8 +413,9 @@
                 return;
               }
             }
-            resValue.push(tempRes)
+            // resValue.push(tempRes)
           }
+          resValue = tempRes
         } else {
           resValue = utils.select('[name="one"]').value
         }
