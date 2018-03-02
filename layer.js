@@ -316,9 +316,9 @@
         loadingText.style.display = 'none';
       }
       if (mask) {
-        loadingMask.className = 'J_MaskCont mask-cont'
+        loadingMask.className = 'J_MaskCont mask-cont mask-animate'
       } else {
-        utils.select('.J_MaskCont').className = 'J_MaskCont mask-cont mask-hide'
+        utils.select('.J_MaskCont').className = 'J_MaskCont mask-cont mask-animate mask-hide'
       }
     },
     endLoading: function () {
