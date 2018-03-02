@@ -37,8 +37,12 @@ button {
   <button onclick="input()">input</button>
 </div>
 </body>
-<script src="yjyLayer.js?random=123"></script>
+<script id="script" src="yjyLayer.js?update=123"></script>
 <script>
+window.onresize = function () {
+  location.reload()
+}
+
 function toast () {
   // yjyLayer.toast('我是提示消息')
   // yjyLayer.toast('<div>我是提示消息</div>')
@@ -96,9 +100,10 @@ function input () {
     title: '请输入标题',
     confirmText: '确认的文字',
     cancelText: '取消的文字',
+    labelWidth: '80px', // 默认为60px
     inputs: [{
       type: 'text',
-      label: '姓名',
+      label: '姓名士大夫',
       name: 'name',
       value: '小明',
       required: true
@@ -108,6 +113,14 @@ function input () {
       label: '年龄',
       name: 'age',
       placeholder: '请输入年龄',
+      required: true
+    },
+    {
+      type: 'textarea',
+      label: '自我介绍',
+      name: 'desc',
+      rows: 5,
+      value: '我的',
       required: true
     },
     {
